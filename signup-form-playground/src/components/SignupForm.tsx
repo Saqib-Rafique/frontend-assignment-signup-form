@@ -306,16 +306,7 @@ export default function SignupForm() {
 
     if (isSubmitting) {
       setSubmitNotice("A submission is already in progress. Please wait…");
-      return;
-    }
-
-    const gate = submitThrottleRef.current();
-    if (!gate.allowed) {
-      setSubmitNotice(
-        `Please wait — submit is throttled (${Math.ceil(
-          gate.remainingMs / 1000
-        )}s).`
-      );
+      window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
 
