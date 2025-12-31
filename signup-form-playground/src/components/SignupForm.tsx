@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   Alert,
   Avatar,
@@ -160,24 +160,22 @@ async function fakeSignupRequest(
 }
 
 export default function SignupForm() {
-  const [values, setValues] = React.useState<SignupFormValues>(initialValues);
-  const [errors, setErrors] = React.useState<FieldErrors>({});
-  const [touched, setTouched] = React.useState<
+  const [values, setValues] = useState<SignupFormValues>(initialValues);
+  const [errors, setErrors] = useState<FieldErrors>({});
+  const [touched, setTouched] = useState<
     Partial<Record<keyof SignupFormValues, boolean>>
   >({});
 
-  const [showPassword, setShowPassword] = React.useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = React.useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const [imagePreviewUrl, setImagePreviewUrl] = React.useState<string | null>(
-    null
-  );
+  const [imagePreviewUrl, setImagePreviewUrl] = useState<string | null>(null);
 
-  const [usernameStatus, setUsernameStatus] = React.useState<UsernameStatus>({
+  const [usernameStatus, setUsernameStatus] = useState<UsernameStatus>({
     state: "idle",
   });
-  const usernameReqIdRef = React.useRef(0);
-  const debouncedUsernameCheck = React.useMemo(
+  const usernameReqIdRef = useRef(0);
+  const debouncedUsernameCheck = useMemo(
     () =>
       debounce(async (trimmedUsername: string, reqId: number) => {
         const result = await fakeCheckUsernameAvailability(trimmedUsername);
@@ -192,12 +190,12 @@ export default function SignupForm() {
     []
   );
 
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const submitThrottleRef = React.useRef(createThrottle(SUBMIT_THROTTLE_MS));
-  const [submitNotice, setSubmitNotice] = React.useState<string | null>(null);
-  const [submitSuccess, setSubmitSuccess] = React.useState<string | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitThrottleRef = useRef(createThrottle(SUBMIT_THROTTLE_MS));
+  const [submitNotice, setSubmitNotice] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
 
-  React.useEffect(() => {
+  useEffect(() => {
     return () => {
       if (imagePreviewUrl) URL.revokeObjectURL(imagePreviewUrl);
       debouncedUsernameCheck.cancel();
