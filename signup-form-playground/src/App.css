@@ -1,0 +1,15 @@
+/* App-wide base styles (Vite demo styles removed) */
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Let Material UI control layout and spacing */
+#root {
+  display: flex;
+  flex-direction: column;
+}
