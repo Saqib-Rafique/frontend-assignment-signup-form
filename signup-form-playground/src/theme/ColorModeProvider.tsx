@@ -31,4 +31,3 @@ export function ColorModeProvider({ children }: { children: React.ReactNode }) {
     </ColorModeContext.Provider>
   );
 }
-export { ColorModeContext };
