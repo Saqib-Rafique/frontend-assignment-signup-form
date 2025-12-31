@@ -32,4 +32,3 @@ export function ColorModeProvider({ children }: { children: React.ReactNode }) {
   );
 }
 export { ColorModeContext };
-
