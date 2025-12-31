@@ -3,8 +3,8 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import SignupForm from "../components/SignupForm";
-import ThemeToggleButton from "../components/ThemeToggleButton";
+import SignupForm from "@/components/SignupForm";
+import ThemeToggleButton from "@/components/ThemeToggleButton";
 
 export default function AppShell() {
   return (

@@ -20,8 +20,8 @@ import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 import ErrorOutlineIcon from "@mui/icons-material/ErrorOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-import { debounce } from "../utils/debounce";
-import { createThrottle } from "../utils/throttle";
+import { debounce } from "@/utils/debounce";
+import { createThrottle } from "@/utils/throttle";
 
 export type SignupFormValues = {
   fullName: string;
