@@ -68,6 +68,7 @@ const RESERVED_USERNAMES = new Set([
 ]);
 
 const EMPTY_HELPER = "\u00A0";
+const maxBytes = 2 * 1024 * 1024;
 
 function sleep(ms: number) {
   return new Promise<void>((resolve) => setTimeout(resolve, ms));
@@ -128,7 +129,6 @@ function validateSync(values: SignupFormValues): FieldErrors {
   if (values.profileImage) {
     const { type, size } = values.profileImage;
     const isImage = type.startsWith("image/");
-    const maxBytes = 2 * 1024 * 1024;
     if (!isImage) errors.profileImage = "Please upload a valid image file.";
     else if (size > maxBytes)
       errors.profileImage = "Image must be 2MB or smaller.";
