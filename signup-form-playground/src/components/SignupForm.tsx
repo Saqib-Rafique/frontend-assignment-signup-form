@@ -387,11 +387,11 @@ export default function SignupForm() {
           </Typography>
         </Box>
 
-        {submitNotice ? (
+        {submitNotice && (
           <Alert severity="warning" variant="outlined">
             {submitNotice}
           </Alert>
-        ) : null}
+        )}
 
         {submitSuccess ? (
           <Alert severity="success" variant="outlined">
